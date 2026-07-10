@@ -1,26 +1,36 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --color-primary: #0D2B59;      /* Azul institucional */
+  --color-secondary: #C79A3B;    /* Dorado corporativo */
+  --color-bg: #FFFFFF;
+  --color-bg-muted: #F5F5F5;
+  --color-text: #0D2B59;
+  --color-text-muted: #6B7280;
+  --color-whatsapp: #25D366;
+  --color-success: #16A34A;
+  --color-error: #DC2626;
+
+  --font-heading: var(--font-cormorant);
+  --font-body: var(--font-montserrat);
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --color-primary: var(--color-primary);
+  --color-secondary: var(--color-secondary);
+  --color-bg: var(--color-bg);
+  --color-bg-muted: var(--color-bg-muted);
+  --color-whatsapp: var(--color-whatsapp);
+  --font-heading: var(--font-heading);
+  --font-body: var(--font-body);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-body), sans-serif;
+}
+
+h1, h2, h3, .font-heading {
+  font-family: var(--font-heading), serif;
 }

@@ -1,0 +1,45 @@
+import Image from "next/image";
+import Link from "next/link";
+
+const menu = [
+  "Inicio",
+  "Nosotros",
+  "Servicios",
+  "Propiedades",
+  "Tasaciones",
+  "Barrios",
+  "Contacto",
+];
+
+export default function Header() {
+  return (
+    <header className="sticky top-0 z-50 border-b border-gray-200 bg-white/95 backdrop-blur">
+      <div className="mx-auto flex h-24 max-w-7xl items-center justify-between px-8">
+        <Image
+          src="/images/logo-navbar.png"
+          alt="Carolina Bustamante Bienes Raíces"
+          width={230}
+          height={240}
+          className="h-24 w-auto object-contain"
+          priority
+        />
+
+        <nav className="hidden lg:flex items-center gap-8">
+          {menu.map((item) => (
+            <Link
+              key={item}
+              href="#"
+              className="font-medium text-[#0D2B59] transition hover:text-[#C79A3B]"
+            >
+              {item}
+            </Link>
+          ))}
+        </nav>
+
+        <button className="hidden rounded-xl bg-[#0D2B59] px-6 py-3 font-semibold text-white transition hover:bg-[#C79A3B] hover:text-[#0D2B59] lg:block">
+          Tasación Gratuita
+        </button>
+      </div>
+    </header>
+  );
+}
