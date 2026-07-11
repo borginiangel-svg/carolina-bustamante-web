@@ -7,7 +7,7 @@ const menu = [
   { label: "Servicios", href: "/servicios" },
   { label: "Propiedades", href: "/propiedades" },
   { label: "Tasaciones", href: "/tasaciones" },
-  { label: "Barrios", href: "#" },
+  { label: "Barrios", href: "/barrios" },
   { label: "Contacto", href: "#" },
 ];
 
