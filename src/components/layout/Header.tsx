@@ -5,7 +5,7 @@ const menu = [
   { label: "Inicio", href: "/" },
   { label: "Nosotros", href: "/nosotros" },
   { label: "Servicios", href: "#" },
-  { label: "Propiedades", href: "#" },
+  { label: "Propiedades", href: "/propiedades" },
   { label: "Tasaciones", href: "#" },
   { label: "Barrios", href: "#" },
   { label: "Contacto", href: "#" },
