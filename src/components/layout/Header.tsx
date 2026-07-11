@@ -6,7 +6,7 @@ const menu = [
   { label: "Nosotros", href: "/nosotros" },
   { label: "Servicios", href: "/servicios" },
   { label: "Propiedades", href: "/propiedades" },
-  { label: "Tasaciones", href: "#" },
+  { label: "Tasaciones", href: "/tasaciones" },
   { label: "Barrios", href: "#" },
   { label: "Contacto", href: "#" },
 ];
@@ -38,9 +38,12 @@ export default function Header() {
           ))}
         </nav>
 
-        <button className="hidden rounded-xl bg-[#0D2B59] px-6 py-3 font-semibold text-white transition hover:bg-[#C79A3B] hover:text-[#0D2B59] lg:block">
+        <Link
+          href="/tasaciones#formulario"
+          className="hidden rounded-xl bg-[#0D2B59] px-6 py-3 font-semibold text-white transition hover:bg-[#C79A3B] hover:text-[#0D2B59] lg:block"
+        >
           Tasación Gratuita
-        </button>
+        </Link>
       </div>
     </header>
   );
