@@ -20,7 +20,7 @@ export default function Header() {
           alt="Carolina Bustamante Bienes Raíces"
           width={300}
           height={300}
-          className="h-24 w-24 shrink-0 object-contain"
+          className="h-24 w-auto shrink-0 object-contain"
           priority
         />
 
