@@ -16,11 +16,11 @@ export default function Header() {
     <header className="sticky top-0 z-50 border-b border-gray-200 bg-white/95 backdrop-blur">
       <div className="mx-auto flex h-24 max-w-7xl items-center justify-between px-8">
         <Image
-          src="/images/logo-navbar.png"
+          src="/images/logo-badge-navbar.png"
           alt="Carolina Bustamante Bienes Raíces"
-          width={230}
-          height={240}
-          className="h-24 w-auto object-contain"
+          width={300}
+          height={300}
+          className="h-24 w-24 shrink-0 object-contain"
           priority
         />
 

@@ -13,7 +13,17 @@ const montserrat = Montserrat({
   variable: "--font-montserrat",
 });
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export const metadata = {
+  title: "Carolina Bustamante Bienes Raíces | Gran La Plata",
+  description:
+    "Asesoramiento inmobiliario integral en el Gran La Plata. Compra, venta, alquiler y tasaciones con acompañamiento personalizado.",
+};
+
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <html lang="es" className={`${cormorant.variable} ${montserrat.variable}`}>
       <body>{children}</body>
