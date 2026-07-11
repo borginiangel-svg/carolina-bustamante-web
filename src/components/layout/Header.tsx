@@ -8,7 +8,7 @@ const menu = [
   { label: "Propiedades", href: "/propiedades" },
   { label: "Tasaciones", href: "/tasaciones" },
   { label: "Barrios", href: "/barrios" },
-  { label: "Contacto", href: "#" },
+  { label: "Contacto", href: "/contacto" },
 ];
 
 export default function Header() {
