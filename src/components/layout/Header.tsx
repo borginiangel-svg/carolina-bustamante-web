@@ -4,7 +4,7 @@ import Link from "next/link";
 const menu = [
   { label: "Inicio", href: "/" },
   { label: "Nosotros", href: "/nosotros" },
-  { label: "Servicios", href: "#" },
+  { label: "Servicios", href: "/servicios" },
   { label: "Propiedades", href: "/propiedades" },
   { label: "Tasaciones", href: "#" },
   { label: "Barrios", href: "#" },
