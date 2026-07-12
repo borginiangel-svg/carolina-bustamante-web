@@ -6,14 +6,23 @@ import FeaturedProperties from "@/components/sections/FeaturedProperties";
 import Testimonials from "@/components/sections/Testimonials";
 import ContactForm from "@/components/sections/ContactForm";
 import WhatsAppButton from "@/components/ui/WhatsAppButton";
+import { createClient } from "@/lib/supabase/server";
 
-export default function Home() {
+export default async function Home() {
+  const supabase = await createClient();
+  const { data: propiedades } = await supabase
+    .from("propiedades")
+    .select("*")
+    .eq("publicada", true)
+    .order("creado_en", { ascending: false })
+    .limit(3);
+
   return (
     <>
       <Header />
       <Hero />
       <Services />
-      <FeaturedProperties />
+      <FeaturedProperties propiedades={propiedades ?? []} />
       <Testimonials />
       <ContactForm />
       <Footer />
