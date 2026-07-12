@@ -1,5 +1,6 @@
 import { Cormorant_Garamond, Montserrat } from "next/font/google";
 import "./globals.css";
+import DebugConsole from "@/components/DebugConsole";
 
 const cormorant = Cormorant_Garamond({
   subsets: ["latin"],
@@ -26,7 +27,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="es" className={`${cormorant.variable} ${montserrat.variable}`}>
-      <body>{children}</body>
+      <body>
+        {children}
+        <DebugConsole />
+      </body>
     </html>
   );
 }
