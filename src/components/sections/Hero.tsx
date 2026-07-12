@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 
 const tipos = ["Tipo de propiedad", "Casa", "Departamento", "Terreno", "Local comercial"];
 const barrios = ["Barrio / Zona", "Centro", "City Bell", "Gonnet", "Villa Elisa", "Tolosa", "Ringuelet"];
@@ -32,8 +33,8 @@ export default function Hero() {
           Conectamos propiedades con personas
         </h1>
         <p className="mt-6 max-w-2xl text-lg text-white/90">
-          Acompañamos cada decisión inmobiliaria con transparencia, cercanía y conocimiento
-          profundo del mercado del Gran La Plata.
+          Acompañamos cada decisión inmobiliaria con transparencia, cercanía y
+          conocimiento profundo del mercado del Gran La Plata.
         </p>
 
         <div className="mt-10 flex flex-col gap-4 sm:flex-row">
@@ -43,9 +44,12 @@ export default function Hero() {
           >
             Ver propiedades
           </button>
-          <button className="h-[52px] rounded-xl border border-white bg-transparent px-8 font-semibold text-white transition hover:bg-white hover:text-[#0D2B59]">
+          <Link
+            href="/tasaciones#formulario"
+            className="flex h-[52px] items-center justify-center rounded-xl border border-white bg-transparent px-8 font-semibold text-white transition hover:bg-white hover:text-[#0D2B59]"
+          >
             Tasación Gratuita
-          </button>
+          </Link>
         </div>
 
         {/* Buscador funcional */}
