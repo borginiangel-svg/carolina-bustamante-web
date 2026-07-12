@@ -168,9 +168,12 @@ export default function PropiedadesFiltro({
                     </div>
 
                     <div className="mt-5 flex gap-3">
-                      <button className="h-[44px] flex-1 rounded-xl bg-[#0D2B59] text-sm font-semibold text-white transition hover:bg-[#C79A3B]">
+                      <Link
+                        href={`/propiedades/${p.id}`}
+                        className="flex h-[44px] flex-1 items-center justify-center rounded-xl bg-[#0D2B59] text-sm font-semibold text-white transition hover:bg-[#C79A3B]"
+                      >
                         Ver propiedad
-                      </button>
+                      </Link>
                       <Link
                         href={`https://wa.me/5492215593304?text=${encodeURIComponent(
                           `Hola! Me interesa esta propiedad: ${p.titulo} (${p.barrio})`

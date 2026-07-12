@@ -68,7 +68,7 @@ export default function FeaturedProperties({
 
                 <div className="mt-5 flex gap-3">
                   <Link
-                    href="/propiedades"
+                    href={`/propiedades/${p.id}`}
                     className="h-[44px] flex-1 rounded-xl bg-[#0D2B59] text-sm font-semibold text-white transition hover:bg-[#C79A3B] flex items-center justify-center"
                   >
                     Ver propiedad
