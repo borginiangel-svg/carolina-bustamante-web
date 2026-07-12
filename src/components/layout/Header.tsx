@@ -16,14 +16,9 @@ const menu = [
 
 export default function Header() {
   const [open, setOpen] = useState(false);
-  const [clicks, setClicks] = useState(0);
 
   return (
-    <header
-      className={`sticky top-0 z-50 border-b border-gray-200 backdrop-blur transition-colors ${
-        open ? "bg-red-500" : "bg-white/95"
-      }`}
-    >
+    <header className="sticky top-0 z-50 border-b border-gray-200 bg-white/95 backdrop-blur">
       <div className="mx-auto flex h-24 max-w-7xl items-center justify-between px-8">
         <Link href="/" onClick={() => setOpen(false)}>
           <Image
@@ -36,6 +31,7 @@ export default function Header() {
           />
         </Link>
 
+        {/* Menú desktop */}
         <nav className="hidden lg:flex items-center gap-8">
           {menu.map((item) => (
             <Link
@@ -55,18 +51,26 @@ export default function Header() {
           Tasación Gratuita
         </Link>
 
+        {/* Botón hamburguesa (solo mobile/tablet) */}
         <button
-          onClick={() => {
-            setOpen(!open);
-            setClicks((c) => c + 1);
-          }}
+          onClick={() => setOpen(!open)}
           aria-label="Abrir menú"
-          className="flex h-11 w-16 items-center justify-center rounded-lg bg-yellow-300 text-2xl font-bold text-black lg:hidden"
+          aria-expanded={open}
+          className="flex h-11 w-11 items-center justify-center rounded-lg text-[#0D2B59] transition hover:bg-[#F5F5F5] lg:hidden"
         >
-          {clicks}
+          {open ? (
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <path d="M6 6l12 12M18 6L6 18" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          ) : (
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <path d="M4 7h16M4 12h16M4 17h16" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          )}
         </button>
       </div>
 
+      {/* Menú mobile desplegable */}
       {open && (
         <nav className="border-t border-gray-100 bg-white px-8 py-4 lg:hidden">
           <div className="flex flex-col gap-1">
@@ -80,6 +84,7 @@ export default function Header() {
                 {item.label}
               </Link>
             ))}
+
             <Link
               href="/tasaciones#formulario"
               onClick={() => setOpen(false)}
