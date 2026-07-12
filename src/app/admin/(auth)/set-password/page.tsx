@@ -17,8 +17,8 @@ export default function SetPasswordPage() {
     // El cliente de Supabase detecta automáticamente el token que viene
     // en el hash de la URL (#access_token=...) y crea la sesión.
     const supabase = createClient();
-    supabase.auth.getSession().then(({ data }) => {
-      if (data.session) {
+    supabase.auth.getSession().then((result) => {
+      if (result.data.session) {
         setReady(true);
       } else {
         setError(
