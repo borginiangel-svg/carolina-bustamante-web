@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { crearConsulta } from "@/lib/actions/consultas";
 
 export default function ContactForm() {
   const [enviado, setEnviado] = useState(false);
@@ -18,8 +19,16 @@ export default function ContactForm() {
     setForm({ ...form, [e.target.name]: e.target.value });
   }
 
-  function handleSubmit(e: React.FormEvent) {
+  async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
+
+    crearConsulta({
+      nombre: form.nombre,
+      whatsapp: form.whatsapp,
+      email: form.email,
+      asunto: `Interesado en: ${form.tipoPropiedad}`,
+      mensaje: form.mensaje,
+    });
 
     const numero = "5492215593304";
     const texto = encodeURIComponent(

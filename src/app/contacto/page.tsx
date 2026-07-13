@@ -5,6 +5,7 @@ import Link from "next/link";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import WhatsAppButton from "@/components/ui/WhatsAppButton";
+import { crearConsulta } from "@/lib/actions/consultas";
 
 const canales = [
   {
@@ -69,8 +70,17 @@ export default function Contacto() {
     setForm({ ...form, [e.target.name]: e.target.value });
   }
 
-  function handleSubmit(e: React.FormEvent) {
+  async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
+
+    crearConsulta({
+      nombre: form.nombre,
+      whatsapp: form.whatsapp,
+      email: form.email,
+      asunto: form.asunto,
+      mensaje: form.mensaje,
+    });
+
     const numero = "5492215593304";
     const texto = encodeURIComponent(
       `Hola! Mi nombre es ${form.nombre}.\n` +
@@ -87,7 +97,6 @@ export default function Contacto() {
     <>
       <Header />
 
-      {/* Hero */}
       <section className="bg-[#0D2B59] py-16">
         <div className="mx-auto max-w-3xl px-8 text-center">
           <h1 className="font-heading text-4xl font-semibold text-white sm:text-5xl">
@@ -100,7 +109,6 @@ export default function Contacto() {
         </div>
       </section>
 
-      {/* Canales de contacto */}
       <section className="mx-auto max-w-6xl px-8 py-16">
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {canales.map((c) => {
@@ -138,7 +146,6 @@ export default function Contacto() {
         </div>
       </section>
 
-      {/* Formulario */}
       <section className="bg-[#F5F5F5] py-20">
         <div className="mx-auto max-w-2xl px-8">
           <div className="text-center">

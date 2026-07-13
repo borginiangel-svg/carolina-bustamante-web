@@ -5,6 +5,7 @@ import Link from "next/link";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import WhatsAppButton from "@/components/ui/WhatsAppButton";
+import { crearConsulta } from "@/lib/actions/consultas";
 
 const beneficios = [
   {
@@ -47,8 +48,16 @@ export default function Tasaciones() {
     setForm({ ...form, [e.target.name]: e.target.value });
   }
 
-  function handleSubmit(e: React.FormEvent) {
+  async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
+
+    crearConsulta({
+      nombre: form.nombre,
+      whatsapp: form.whatsapp,
+      asunto: "Solicitud de tasación gratuita",
+      mensaje: `Tipo de propiedad: ${form.tipoPropiedad}. Dirección: ${form.direccion}`,
+    });
+
     const numero = "5492215593304";
     const texto = encodeURIComponent(
       `Hola! Quiero solicitar una tasación gratuita.\n` +
@@ -65,7 +74,6 @@ export default function Tasaciones() {
     <>
       <Header />
 
-      {/* Hero */}
       <section className="bg-[#0D2B59] py-20">
         <div className="mx-auto max-w-3xl px-8 text-center">
           <p className="font-semibold uppercase tracking-wide text-[#C79A3B]">
@@ -81,14 +89,10 @@ export default function Tasaciones() {
         </div>
       </section>
 
-      {/* Beneficios */}
       <section className="mx-auto max-w-6xl px-8 py-20">
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
           {beneficios.map((b) => (
-            <div
-              key={b.titulo}
-              className="rounded-xl bg-[#F5F5F5] p-8"
-            >
+            <div key={b.titulo} className="rounded-xl bg-[#F5F5F5] p-8">
               <h3 className="font-heading text-xl font-semibold text-[#0D2B59]">
                 {b.titulo}
               </h3>
@@ -98,7 +102,6 @@ export default function Tasaciones() {
         </div>
       </section>
 
-      {/* Proceso */}
       <section className="bg-[#F5F5F5] py-20">
         <div className="mx-auto max-w-3xl px-8">
           <h2 className="text-center font-heading text-3xl font-semibold text-[#0D2B59] sm:text-4xl">
@@ -118,7 +121,6 @@ export default function Tasaciones() {
         </div>
       </section>
 
-      {/* Formulario */}
       <section id="formulario" className="scroll-mt-24 bg-[#0D2B59] py-20">
         <div className="mx-auto max-w-2xl px-8">
           <div className="text-center">

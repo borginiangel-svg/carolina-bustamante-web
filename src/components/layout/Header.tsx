@@ -31,7 +31,6 @@ export default function Header() {
           />
         </Link>
 
-        {/* Menú desktop */}
         <nav className="hidden lg:flex items-center gap-8">
           {menu.map((item) => (
             <Link
@@ -51,7 +50,6 @@ export default function Header() {
           Tasación Gratuita
         </Link>
 
-        {/* Botón hamburguesa (solo mobile/tablet) */}
         <button
           onClick={() => setOpen(!open)}
           aria-label="Abrir menú"
@@ -70,7 +68,6 @@ export default function Header() {
         </button>
       </div>
 
-      {/* Menú mobile desplegable */}
       {open && (
         <nav className="border-t border-gray-100 bg-white px-8 py-4 lg:hidden">
           <div className="flex flex-col gap-1">
@@ -84,7 +81,6 @@ export default function Header() {
                 {item.label}
               </Link>
             ))}
-
             <Link
               href="/tasaciones#formulario"
               onClick={() => setOpen(false)}
