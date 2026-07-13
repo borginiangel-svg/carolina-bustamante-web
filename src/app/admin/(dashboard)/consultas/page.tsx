@@ -66,7 +66,13 @@ export default async function AdminConsultas() {
                   </p>
                 </div>
 
-                <ConsultaRowActions id={c.id} estadoActual={c.estado} />
+                <ConsultaRowActions
+                  id={c.id}
+                  estadoActual={c.estado}
+                  nombre={c.nombre}
+                  whatsapp={c.whatsapp}
+                  email={c.email}
+                />
               </div>
             </div>
           ))

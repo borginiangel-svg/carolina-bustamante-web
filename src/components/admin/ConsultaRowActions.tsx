@@ -2,16 +2,26 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { actualizarEstadoConsulta, borrarConsulta } from "@/lib/actions/consultas";
+import {
+  actualizarEstadoConsulta,
+  borrarConsulta,
+} from "@/lib/actions/consultas";
+import { convertirConsultaEnCliente } from "@/lib/actions/clientes";
 
 const estados = ["nuevo", "contactado", "descartado", "convertido"];
 
 export default function ConsultaRowActions({
   id,
   estadoActual,
+  nombre,
+  whatsapp,
+  email,
 }: {
   id: string;
   estadoActual: string;
+  nombre: string;
+  whatsapp: string | null;
+  email: string | null;
 }) {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
@@ -31,8 +41,21 @@ export default function ConsultaRowActions({
     setLoading(false);
   }
 
+  async function handleConvertir() {
+    if (!confirm(`¿Convertir a "${nombre}" en cliente para hacer seguimiento?`)) return;
+    setLoading(true);
+    await convertirConsultaEnCliente(id, {
+      nombre,
+      whatsapp: whatsapp || "",
+      email: email || "",
+      tipo: "Comprador",
+    });
+    router.refresh();
+    setLoading(false);
+  }
+
   return (
-    <div className="flex items-center gap-2">
+    <div className="flex flex-wrap items-center gap-2">
       <select
         value={estadoActual}
         onChange={(e) => handleEstadoChange(e.target.value)}
@@ -45,6 +68,16 @@ export default function ConsultaRowActions({
           </option>
         ))}
       </select>
+
+      {estadoActual !== "convertido" && (
+        <button
+          onClick={handleConvertir}
+          disabled={loading}
+          className="rounded-lg bg-[#0D2B59] px-3 py-1.5 text-xs font-semibold text-white transition hover:bg-[#C79A3B] hover:text-[#0D2B59] disabled:opacity-50"
+        >
+          Convertir en cliente
+        </button>
+      )}
 
       <button
         onClick={handleDelete}
