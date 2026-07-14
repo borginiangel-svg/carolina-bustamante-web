@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import Link from "next/link";
+import Image from "next/image";
 
 const tipos = ["Tipo de propiedad", "Casa", "Departamento", "Terreno", "Local comercial"];
 const barrios = ["Barrio / Zona", "Centro", "City Bell", "Gonnet", "Villa Elisa", "Tolosa", "Ringuelet"];
@@ -22,19 +22,27 @@ export default function Hero() {
 
   return (
     <section className="relative flex min-h-[90vh] w-full items-center justify-center overflow-hidden">
-      {/* Placeholder de imagen de fondo — reemplazar por foto real */}
-      <div className="absolute inset-0 bg-[linear-gradient(135deg,#0D2B59_0%,#173d73_50%,#0D2B59_100%)]" />
+      {/* Foto de fondo real */}
+      <Image
+        src="/images/hero-casa.jpg"
+        alt="Casa premium en Gran La Plata"
+        fill
+        priority
+        sizes="100vw"
+        className="object-cover"
+        style={{ objectPosition: "65% 40%" }}
+      />
 
-      {/* Degradado azul institucional oscureciendo la base */}
-      <div className="absolute inset-0 bg-gradient-to-t from-[#0D2B59] via-[#0D2B59]/70 to-[#0D2B59]/30" />
+      {/* Degradado azul institucional oscureciendo la base, para que el texto se lea bien */}
+      <div className="absolute inset-0 bg-gradient-to-t from-[#0D2B59] via-[#0D2B59]/70 to-[#0D2B59]/40" />
 
       <div className="relative z-10 mx-auto flex max-w-5xl flex-col items-center px-6 text-center">
         <h1 className="font-heading text-4xl font-semibold text-white sm:text-5xl lg:text-6xl">
           Conectamos propiedades con personas
         </h1>
         <p className="mt-6 max-w-2xl text-lg text-white/90">
-          Acompañamos cada decisión inmobiliaria con transparencia, cercanía y
-          conocimiento profundo del mercado del Gran La Plata.
+          Acompañamos cada decisión inmobiliaria con transparencia, cercanía y conocimiento
+          profundo del mercado del Gran La Plata.
         </p>
 
         <div className="mt-10 flex flex-col gap-4 sm:flex-row">
@@ -44,12 +52,9 @@ export default function Hero() {
           >
             Ver propiedades
           </button>
-          <Link
-            href="/tasaciones#formulario"
-            className="flex h-[52px] items-center justify-center rounded-xl border border-white bg-transparent px-8 font-semibold text-white transition hover:bg-white hover:text-[#0D2B59]"
-          >
+          <button className="h-[52px] rounded-xl border border-white bg-transparent px-8 font-semibold text-white transition hover:bg-white hover:text-[#0D2B59]">
             Tasación Gratuita
-          </Link>
+          </button>
         </div>
 
         {/* Buscador funcional */}

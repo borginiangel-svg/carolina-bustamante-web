@@ -19,14 +19,14 @@ export default function Header() {
 
   return (
     <header className="sticky top-0 z-50 border-b border-gray-200 bg-white/95 backdrop-blur">
-      <div className="mx-auto flex h-24 max-w-7xl items-center justify-between px-8">
+      <div className="mx-auto flex h-28 max-w-7xl items-center justify-between px-8">
         <Link href="/" onClick={() => setOpen(false)}>
           <Image
-            src="/images/logo-badge-navbar.png"
+            src="/images/logo-lockup-v3.png"
             alt="Carolina Bustamante Bienes Raíces"
-            width={300}
-            height={300}
-            className="h-16 w-16 shrink-0 object-contain sm:h-24 sm:w-24"
+            width={1249}
+            height={420}
+            className="h-20 w-auto shrink-0 object-contain sm:h-24"
             priority
           />
         </Link>

@@ -8,11 +8,11 @@ export default function Footer() {
         <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-4">
           <div>
             <Image
-              src="/images/logo-badge-original.png"
+              src="/images/logo-solo-footer.png"
               alt="Carolina Bustamante Bienes Raíces"
-              width={600}
-              height={600}
-              className="h-28 w-28 shrink-0 object-contain"
+              width={352}
+              height={347}
+              className="h-20 w-20 object-contain"
             />
             <p className="mt-4 text-sm text-white/70">
               Conectamos propiedades con personas, creamos hogares.
