@@ -1,20 +1,6 @@
 import Link from "next/link";
 import { createClient } from "@/lib/supabase/server";
-import ClienteRowActions from "@/components/admin/ClienteRowActions";
-
-const estadoColores: Record<string, string> = {
-  nuevo: "bg-blue-50 text-blue-700",
-  en_negociacion: "bg-yellow-50 text-yellow-700",
-  cerrado: "bg-green-50 text-green-700",
-  perdido: "bg-gray-100 text-gray-500",
-};
-
-const estadoLabels: Record<string, string> = {
-  nuevo: "Nuevo",
-  en_negociacion: "En negociación",
-  cerrado: "Cerrado",
-  perdido: "Perdido",
-};
+import ClienteRow from "@/components/admin/ClienteRow";
 
 export default async function AdminClientes() {
   const supabase = await createClient();
@@ -49,46 +35,7 @@ export default async function AdminClientes() {
             Todavía no cargaste ningún cliente.
           </div>
         ) : (
-          clientes.map((c) => (
-            <div
-              key={c.id}
-              className="rounded-xl bg-white p-6 shadow-sm ring-1 ring-gray-100"
-            >
-              <div className="flex flex-wrap items-start justify-between gap-4">
-                <div>
-                  <div className="flex items-center gap-3">
-                    <p className="font-heading text-lg font-semibold text-[#0D2B59]">
-                      {c.nombre}
-                    </p>
-                    <span
-                      className={`rounded-full px-3 py-1 text-xs font-semibold ${
-                        estadoColores[c.estado] || "bg-gray-100 text-gray-500"
-                      }`}
-                    >
-                      {estadoLabels[c.estado] || c.estado}
-                    </span>
-                    {c.tipo && (
-                      <span className="rounded-full bg-[#F5F5F5] px-3 py-1 text-xs font-semibold text-[#0D2B59]">
-                        {c.tipo}
-                      </span>
-                    )}
-                  </div>
-                  <p className="mt-1 text-sm text-gray-500">
-                    {c.whatsapp && <>WhatsApp: {c.whatsapp} </>}
-                    {c.email && <> · Email: {c.email}</>}
-                  </p>
-                  {c.notas && (
-                    <p className="mt-2 text-sm text-gray-600">{c.notas}</p>
-                  )}
-                  <p className="mt-2 text-xs text-gray-400">
-                    Desde {new Date(c.creado_en).toLocaleDateString("es-AR")}
-                  </p>
-                </div>
-
-                <ClienteRowActions id={c.id} estadoActual={c.estado} />
-              </div>
-            </div>
-          ))
+          clientes.map((c) => <ClienteRow key={c.id} cliente={c} />)
         )}
       </div>
     </>

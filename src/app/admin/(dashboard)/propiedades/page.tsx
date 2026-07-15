@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { createClient } from "@/lib/supabase/server";
-import PropiedadRowActions from "@/components/admin/PropiedadRowActions";
+import PropiedadRow from "@/components/admin/PropiedadRow";
 
 export default async function AdminPropiedades() {
   const supabase = await createClient();
@@ -48,28 +48,7 @@ export default async function AdminPropiedades() {
             </thead>
             <tbody>
               {propiedades.map((p) => (
-                <tr key={p.id} className="border-b border-gray-50 last:border-0">
-                  <td className="px-6 py-4 font-medium text-[#0D2B59]">{p.titulo}</td>
-                  <td className="px-6 py-4 text-gray-600">{p.tipo}</td>
-                  <td className="px-6 py-4 text-gray-600">{p.barrio}</td>
-                  <td className="px-6 py-4 text-gray-600">
-                    {p.moneda} {Number(p.precio).toLocaleString("es-AR")}
-                  </td>
-                  <td className="px-6 py-4">
-                    <span
-                      className={`rounded-full px-3 py-1 text-xs font-semibold ${
-                        p.publicada
-                          ? "bg-green-50 text-green-700"
-                          : "bg-gray-100 text-gray-500"
-                      }`}
-                    >
-                      {p.publicada ? "Publicada" : "Oculta"}
-                    </span>
-                  </td>
-                  <td className="px-6 py-4">
-                    <PropiedadRowActions id={p.id} publicada={p.publicada} />
-                  </td>
-                </tr>
+                <PropiedadRow key={p.id} propiedad={p} />
               ))}
             </tbody>
           </table>
