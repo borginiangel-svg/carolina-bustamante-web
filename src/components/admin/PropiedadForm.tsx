@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
+import { createClient } from "@/lib/supabase/client";
 
 const tipos = ["Casa", "Departamento", "Terreno", "Local comercial"];
 const estados = ["En venta", "En alquiler"];
@@ -22,12 +24,52 @@ type Props = {
     banos?: number;
     superficie_m2?: number;
     publicada?: boolean;
+    fotos?: string[];
   };
   submitLabel: string;
 };
 
 export default function PropiedadForm({ action, defaultValues, submitLabel }: Props) {
   const [loading, setLoading] = useState(false);
+  const [fotos, setFotos] = useState<string[]>(defaultValues?.fotos || []);
+  const [subiendo, setSubiendo] = useState(false);
+  const [errorFoto, setErrorFoto] = useState("");
+
+  async function handleFotosChange(e: React.ChangeEvent<HTMLInputElement>) {
+    const files = e.target.files;
+    if (!files || files.length === 0) return;
+
+    setSubiendo(true);
+    setErrorFoto("");
+    const supabase = createClient();
+
+    for (const file of Array.from(files)) {
+      const ext = file.name.split(".").pop();
+      const nombreArchivo = `${crypto.randomUUID()}.${ext}`;
+
+      const { error } = await supabase.storage
+        .from("propiedades-fotos")
+        .upload(nombreArchivo, file);
+
+      if (error) {
+        setErrorFoto("No se pudo subir " + file.name + ": " + error.message);
+        continue;
+      }
+
+      const { data: urlData } = supabase.storage
+        .from("propiedades-fotos")
+        .getPublicUrl(nombreArchivo);
+
+      setFotos((prev) => [...prev, urlData.publicUrl]);
+    }
+
+    setSubiendo(false);
+    e.target.value = "";
+  }
+
+  function quitarFoto(url: string) {
+    setFotos((prev) => prev.filter((f) => f !== url));
+  }
 
   return (
     <form
@@ -147,9 +189,59 @@ export default function PropiedadForm({ action, defaultValues, submitLabel }: Pr
         Publicada (visible en el sitio)
       </label>
 
+      {/* Fotos */}
+      <div className="sm:col-span-2">
+        <label className="mb-2 block text-sm font-semibold text-[#0D2B59]">
+          Fotos de la propiedad
+        </label>
+
+        <input
+          type="file"
+          accept="image/*"
+          multiple
+          onChange={handleFotosChange}
+          disabled={subiendo}
+          className="block w-full text-sm text-gray-600 file:mr-4 file:h-[44px] file:rounded-xl file:border-0 file:bg-[#0D2B59] file:px-5 file:text-sm file:font-semibold file:text-white hover:file:bg-[#C79A3B] hover:file:text-[#0D2B59]"
+        />
+
+        {subiendo && (
+          <p className="mt-2 text-sm text-gray-500">Subiendo foto...</p>
+        )}
+        {errorFoto && (
+          <p className="mt-2 text-sm text-red-600">{errorFoto}</p>
+        )}
+
+        {fotos.length > 0 && (
+          <div className="mt-4 grid grid-cols-3 gap-3 sm:grid-cols-5">
+            {fotos.map((url) => (
+              <div key={url} className="group relative aspect-square overflow-hidden rounded-xl">
+                <Image
+                  src={url}
+                  alt="Foto de la propiedad"
+                  fill
+                  className="object-cover"
+                />
+                <button
+                  type="button"
+                  onClick={() => quitarFoto(url)}
+                  className="absolute right-1 top-1 flex h-6 w-6 items-center justify-center rounded-full bg-red-600 text-xs font-bold text-white opacity-0 transition group-hover:opacity-100"
+                >
+                  ×
+                </button>
+              </div>
+            ))}
+          </div>
+        )}
+
+        {/* Campos ocultos: mandan cada URL de foto al server action */}
+        {fotos.map((url) => (
+          <input key={url} type="hidden" name="fotos" value={url} />
+        ))}
+      </div>
+
       <button
         type="submit"
-        disabled={loading}
+        disabled={loading || subiendo}
         className="h-[52px] rounded-xl bg-[#0D2B59] font-semibold text-white transition hover:bg-[#C79A3B] hover:text-[#0D2B59] disabled:opacity-60 sm:col-span-2"
       >
         {loading ? "Guardando..." : submitLabel}

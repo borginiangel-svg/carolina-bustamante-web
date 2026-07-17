@@ -17,6 +17,7 @@ export type PropiedadInput = {
   banos: number;
   superficie_m2: number;
   publicada: boolean;
+  fotos: string[];
 };
 
 function parseForm(formData: FormData): PropiedadInput {
@@ -33,6 +34,7 @@ function parseForm(formData: FormData): PropiedadInput {
     banos: Number(formData.get("banos") || 0),
     superficie_m2: Number(formData.get("superficie_m2") || 0),
     publicada: formData.get("publicada") === "on",
+    fotos: formData.getAll("fotos").map(String),
   };
 }
 

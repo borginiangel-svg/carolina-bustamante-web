@@ -2,6 +2,7 @@
 
 import { useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 import { borrarPropiedad, togglePublicada } from "@/lib/actions/propiedades";
 
 type Propiedad = {
@@ -12,6 +13,7 @@ type Propiedad = {
   precio: number;
   moneda: string;
   publicada: boolean;
+  fotos?: string[];
 };
 
 export default function PropiedadRow({ propiedad }: { propiedad: Propiedad }) {
@@ -40,7 +42,21 @@ export default function PropiedadRow({ propiedad }: { propiedad: Propiedad }) {
 
   return (
     <tr className="border-b border-gray-50 last:border-0">
-      <td className="px-6 py-4 font-medium text-[#0D2B59]">{propiedad.titulo}</td>
+      <td className="px-6 py-4">
+        <div className="flex items-center gap-3">
+          <div className="relative h-12 w-12 shrink-0 overflow-hidden rounded-lg bg-[#F5F5F5]">
+            {propiedad.fotos && propiedad.fotos.length > 0 && (
+              <Image
+                src={propiedad.fotos[0]}
+                alt={propiedad.titulo}
+                fill
+                className="object-cover"
+              />
+            )}
+          </div>
+          <span className="font-medium text-[#0D2B59]">{propiedad.titulo}</span>
+        </div>
+      </td>
       <td className="px-6 py-4 text-gray-600">{propiedad.tipo}</td>
       <td className="px-6 py-4 text-gray-600">{propiedad.barrio}</td>
       <td className="px-6 py-4 text-gray-600">

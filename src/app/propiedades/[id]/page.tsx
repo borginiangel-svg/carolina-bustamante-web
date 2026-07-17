@@ -1,4 +1,5 @@
 import { notFound } from "next/navigation";
+import Image from "next/image";
 import Link from "next/link";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
@@ -24,6 +25,7 @@ export default async function DetallePropiedad({
     notFound();
   }
 
+  const fotos: string[] = propiedad.fotos || [];
   const mensajeWhatsapp = encodeURIComponent(
     `Hola! Me interesa esta propiedad: ${propiedad.titulo} (${propiedad.barrio})`
   );
@@ -32,12 +34,42 @@ export default async function DetallePropiedad({
     <>
       <Header />
 
-      {/* Imagen / placeholder */}
-      <section className="relative flex h-72 items-center justify-center bg-gradient-to-br from-[#0D2B59] to-[#173d73] sm:h-96">
-        <span className="absolute left-6 top-6 rounded-full bg-white px-4 py-1.5 text-sm font-semibold text-[#0D2B59]">
-          {propiedad.estado}
-        </span>
-      </section>
+      {/* Foto principal + miniaturas */}
+      {fotos.length > 0 ? (
+        <section className="mx-auto max-w-5xl px-8 pt-8">
+          <div className="relative h-72 w-full overflow-hidden rounded-xl bg-[#0D2B59] sm:h-96">
+            <Image
+              src={fotos[0]}
+              alt={propiedad.titulo}
+              fill
+              priority
+              className="object-cover"
+            />
+            <span className="absolute left-4 top-4 rounded-full bg-white px-4 py-1.5 text-sm font-semibold text-[#0D2B59]">
+              {propiedad.estado}
+            </span>
+          </div>
+
+          {fotos.length > 1 && (
+            <div className="mt-3 grid grid-cols-4 gap-3 sm:grid-cols-6">
+              {fotos.slice(1).map((url) => (
+                <div
+                  key={url}
+                  className="relative aspect-square overflow-hidden rounded-lg bg-[#F5F5F5]"
+                >
+                  <Image src={url} alt={propiedad.titulo} fill className="object-cover" />
+                </div>
+              ))}
+            </div>
+          )}
+        </section>
+      ) : (
+        <section className="relative flex h-72 items-center justify-center bg-gradient-to-br from-[#0D2B59] to-[#173d73] sm:h-96">
+          <span className="absolute left-6 top-6 rounded-full bg-white px-4 py-1.5 text-sm font-semibold text-[#0D2B59]">
+            {propiedad.estado}
+          </span>
+        </section>
+      )}
 
       <section className="mx-auto max-w-5xl px-8 py-12">
         <Link
@@ -66,7 +98,6 @@ export default async function DetallePropiedad({
           </p>
         </div>
 
-        {/* Características */}
         <div className="mt-8 flex flex-wrap gap-6 rounded-xl bg-[#F5F5F5] p-6">
           {propiedad.dormitorios > 0 && (
             <div>
@@ -94,7 +125,6 @@ export default async function DetallePropiedad({
           )}
         </div>
 
-        {/* Descripción */}
         {propiedad.descripcion && (
           <div className="mt-8">
             <h2 className="font-heading text-xl font-semibold text-[#0D2B59]">
@@ -106,7 +136,6 @@ export default async function DetallePropiedad({
           </div>
         )}
 
-        {/* CTA */}
         <div className="mt-10 flex flex-col gap-4 rounded-xl bg-[#0D2B59] p-8 sm:flex-row sm:items-center sm:justify-between">
           <p className="text-lg font-semibold text-white">
             ¿Te interesa esta propiedad?

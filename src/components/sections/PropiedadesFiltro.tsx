@@ -2,6 +2,7 @@
 
 import { useState, useMemo } from "react";
 import { useSearchParams } from "next/navigation";
+import Image from "next/image";
 import Link from "next/link";
 
 const tipos = ["Tipo de propiedad", "Casa", "Departamento", "Terreno", "Local comercial"];
@@ -25,6 +26,7 @@ type Propiedad = {
   dormitorios: number;
   banos: number;
   superficie_m2: number;
+  fotos?: string[];
 };
 
 function precioEnRango(precioUSD: number, rango: string) {
@@ -139,7 +141,15 @@ export default function PropiedadesFiltro({
                   key={p.id}
                   className="overflow-hidden rounded-xl bg-white shadow-sm ring-1 ring-gray-100 transition hover:-translate-y-1 hover:shadow-lg"
                 >
-                  <div className="relative flex h-48 items-center justify-center bg-gradient-to-br from-[#0D2B59] to-[#173d73]">
+                  <div className="relative flex h-48 items-center justify-center overflow-hidden bg-gradient-to-br from-[#0D2B59] to-[#173d73]">
+                    {p.fotos && p.fotos.length > 0 ? (
+                      <Image
+                        src={p.fotos[0]}
+                        alt={p.titulo}
+                        fill
+                        className="object-cover"
+                      />
+                    ) : null}
                     <span className="absolute left-4 top-4 rounded-full bg-white px-3 py-1 text-xs font-semibold text-[#0D2B59]">
                       {p.estado}
                     </span>
