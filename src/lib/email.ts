@@ -21,7 +21,6 @@ interface LeadNotificationParams {
 export async function sendLeadNotification(lead: LeadNotificationParams) {
   const destinatarios = [
     "info@carolinabustamante.com.ar",
-    "CBbienesraices@outlook.com",
   ];
 
   const html = `
