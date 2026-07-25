@@ -1,7 +1,7 @@
 "use server";
-
 import { revalidatePath } from "next/cache";
 import { createClient } from "@/lib/supabase/server";
+import { sendLeadNotification } from "@/lib/email";
 
 export async function crearConsulta(data: {
   nombre: string;
@@ -11,7 +11,6 @@ export async function crearConsulta(data: {
   mensaje?: string;
 }) {
   const supabase = await createClient();
-
   const { error } = await supabase.from("consultas").insert({
     nombre: data.nombre,
     whatsapp: data.whatsapp || null,
@@ -23,6 +22,15 @@ export async function crearConsulta(data: {
 
   if (error) {
     console.error("Error al guardar la consulta:", error.message);
+  } else {
+    // Si se guardó bien, avisamos por mail. Si el mail falla, no rompe el guardado.
+    await sendLeadNotification({
+      nombre: data.nombre,
+      whatsapp: data.whatsapp,
+      email: data.email,
+      asunto: data.asunto,
+      mensaje: data.mensaje,
+    });
   }
 
   revalidatePath("/admin/consultas");
@@ -34,21 +42,17 @@ export async function actualizarEstadoConsulta(id: string, estado: string) {
     .from("consultas")
     .update({ estado })
     .eq("id", id);
-
   if (error) {
     throw new Error("No se pudo actualizar la consulta: " + error.message);
   }
-
   revalidatePath("/admin/consultas");
 }
 
 export async function borrarConsulta(id: string) {
   const supabase = await createClient();
   const { error } = await supabase.from("consultas").delete().eq("id", id);
-
   if (error) {
     throw new Error("No se pudo borrar la consulta: " + error.message);
   }
-
   revalidatePath("/admin/consultas");
 }
