@@ -20,8 +20,8 @@ const canales = [
   },
   {
     titulo: "Email",
-    valor: "CBbienesraices@outlook.com",
-    href: "mailto:CBbienesraices@outlook.com",
+    valor: "info@carolinabustamante.com.ar",
+    href: "mailto:info@carolinabustamante.com.ar",
     icon: (
       <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#0D2B59" strokeWidth="1.5">
         <rect x="3" y="5" width="18" height="14" rx="2" strokeLinecap="round" strokeLinejoin="round" />
