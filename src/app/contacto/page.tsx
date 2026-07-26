@@ -110,7 +110,7 @@ export default function Contacto() {
       </section>
 
       <section className="mx-auto max-w-6xl px-8 py-16">
-        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
           {canales.map((c) => {
             const contenido = (
               <>
@@ -120,7 +120,7 @@ export default function Contacto() {
                 <p className="mt-4 font-heading text-lg font-semibold text-[#0D2B59]">
                   {c.titulo}
                 </p>
-                <p className="mt-1 break-words text-xs sm:text-sm text-gray-600">{c.valor}</p>
+                <p className="mt-1 break-words text-sm text-gray-600">{c.valor}</p>
               </>
             );
 
