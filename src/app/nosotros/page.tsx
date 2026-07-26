@@ -17,7 +17,7 @@ const valores = [
 
 const diferenciales = [
   "Atención personalizada",
-  "Profesional matriculada",
+  "Profesional colegiada",
   "Acompañamiento permanente",
   "Tasaciones reales",
   "Comunicación transparente",
