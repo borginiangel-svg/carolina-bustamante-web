@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import { crearConsulta } from "@/lib/actions/consultas";
 
 export default function ContactForm() {
@@ -44,8 +45,9 @@ export default function ContactForm() {
   }
 
   return (
-    <section className="bg-[#0D2B59] py-24">
-      <div className="mx-auto max-w-3xl px-8">
+    <section className="relative overflow-hidden py-24">
+      <Image src="/images/tasacion/header-tasacion.jpg" alt="Fachada de propiedad boutique al atardecer" fill sizes="100vw" className="object-cover" /> <div className="absolute inset-0 bg-gradient-to-t from-[#0D2B59] via-[#0D2B59]/85 to-[#0D2B59]/70" />
+      <div className="relative z-10 mx-auto max-w-3xl px-8">
         <div className="text-center">
           <h2 className="font-heading text-3xl font-semibold text-white sm:text-4xl">
             Solicitá tu Tasación Gratuita
