@@ -32,8 +32,8 @@ export default function Nosotros() {
       <Header />
 
       {/* Hero de la página */}
-      <section className="relative overflow-hidden py-20">
-        <Image src="/images/nosotros/header-nosotros.jpg" alt="Living de una propiedad premium" fill priority sizes="100vw" className="object-cover" /> <div className="absolute inset-0 bg-gradient-to-t from-[#0D2B59] via-[#0D2B59]/85 to-[#0D2B59]/60" />
+      <section className="relative overflow-hidden bg-[#0D2B59] py-20">
+        <Image src="/images/nosotros/header-nosotros.jpg" alt="Living de una propiedad premium" fill priority sizes="100vw" className="object-contain" /> <div className="absolute inset-0 bg-gradient-to-t from-[#0D2B59] via-[#0D2B59]/85 to-[#0D2B59]/60" />
         <div className="relative z-10 mx-auto grid max-w-6xl grid-cols-1 items-center gap-12 px-8 lg:grid-cols-2">
           <div>
             <p className="font-semibold uppercase tracking-wide text-[#C79A3B]">
@@ -123,8 +123,8 @@ export default function Nosotros() {
       </section>
 
       {/* Diferenciales */}
-      <section className="relative overflow-hidden py-20">
-        <Image src="/images/diferenciales/header-diferenciales.jpg" alt="Llave dorada sobre planos arquitectónicos" fill sizes="100vw" className="object-cover" /> <div className="absolute inset-0 bg-gradient-to-t from-[#0D2B59] via-[#0D2B59]/90 to-[#0D2B59]/75" />
+      <section className="relative overflow-hidden bg-[#0D2B59] py-20">
+        <Image src="/images/diferenciales/header-diferenciales.jpg" alt="Llave dorada sobre planos arquitectónicos" fill sizes="100vw" className="object-contain" /> <div className="absolute inset-0 bg-gradient-to-t from-[#0D2B59] via-[#0D2B59]/90 to-[#0D2B59]/75" />
         <div className="relative z-10 mx-auto max-w-4xl px-8">
           <h2 className="text-center font-heading text-3xl font-semibold text-white sm:text-4xl">
             Nuestros diferenciales
