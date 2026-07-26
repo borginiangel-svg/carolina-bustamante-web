@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import WhatsAppButton from "@/components/ui/WhatsAppButton";
@@ -31,8 +32,9 @@ export default function Nosotros() {
       <Header />
 
       {/* Hero de la página */}
-      <section className="bg-[#0D2B59] py-20">
-        <div className="mx-auto grid max-w-6xl grid-cols-1 items-center gap-12 px-8 lg:grid-cols-2">
+      <section className="relative overflow-hidden py-20">
+        <Image src="/images/nosotros/header-nosotros.jpg" alt="Living de una propiedad premium" fill priority sizes="100vw" className="object-cover" /> <div className="absolute inset-0 bg-gradient-to-t from-[#0D2B59] via-[#0D2B59]/85 to-[#0D2B59]/60" />
+        <div className="relative z-10 mx-auto grid max-w-6xl grid-cols-1 items-center gap-12 px-8 lg:grid-cols-2">
           <div>
             <p className="font-semibold uppercase tracking-wide text-[#C79A3B]">
               Conocé a Carolina
