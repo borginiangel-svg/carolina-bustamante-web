@@ -34,10 +34,10 @@ export default function Footer() {
               </li>
               <li>
                 <Link
-                  href="mailto:CBbienesraices@outlook.com"
-                  className="transition hover:text-[#C79A3B]"
+                  href="mailto:info@carolinabustamante.com.ar"
+                  className="transition hover:text-[#C79A3B] break-all"
                 >
-                  CBbienesraices@outlook.com
+                  info@carolinabustamante.com.ar
                 </Link>
               </li>
               <li>City Bell, La Plata</li>

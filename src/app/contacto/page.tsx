@@ -120,7 +120,7 @@ export default function Contacto() {
                 <p className="mt-4 font-heading text-lg font-semibold text-[#0D2B59]">
                   {c.titulo}
                 </p>
-                <p className="mt-1 break-words text-sm text-gray-600">{c.valor}</p>
+                <p className="mt-1 break-words text-xs sm:text-sm text-gray-600">{c.valor}</p>
               </>
             );
 
