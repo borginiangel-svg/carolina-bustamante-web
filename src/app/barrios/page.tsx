@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import WhatsAppButton from "@/components/ui/WhatsAppButton";
@@ -6,7 +7,7 @@ import WhatsAppButton from "@/components/ui/WhatsAppButton";
 type Barrio = {
   nombre: string;
   descripcion: string;
-  gradient: string;
+  imagen: string;
 };
 
 const barrios: Barrio[] = [
@@ -14,37 +15,37 @@ const barrios: Barrio[] = [
     nombre: "Centro",
     descripcion:
       "El corazón administrativo y comercial de La Plata. Ideal para quienes buscan vida urbana, cercanía a la universidad y todos los servicios a pocas cuadras.",
-    gradient: "from-[#0D2B59] to-[#173d73]",
+    imagen: "/images/barrios/centro.jpg",
   },
   {
     nombre: "City Bell",
     descripcion:
       "Reconocido por sus calles arboladas y su ambiente tranquilo. Un barrio residencial con identidad propia, boutiques, gastronomía y mucha vida de barrio.",
-    gradient: "from-[#C79A3B] to-[#8a6a24]",
+    imagen: "/images/barrios/city-bell.jpg",
   },
   {
     nombre: "Gonnet",
     descripcion:
       "Zona residencial en crecimiento, cercana a countries y a los principales polos educativos. Buena opción para quienes buscan tranquilidad sin alejarse demasiado del centro.",
-    gradient: "from-[#173d73] to-[#0D2B59]",
+    imagen: "/images/barrios/gonnet.jpg",
   },
   {
     nombre: "Villa Elisa",
     descripcion:
       "Un barrio residencial consolidado, con buena conectividad hacia La Plata y Buenos Aires. Combina tranquilidad con cercanía a rutas principales.",
-    gradient: "from-[#8a6a24] to-[#C79A3B]",
+    imagen: "/images/barrios/villa-elisa.jpg",
   },
   {
     nombre: "Tolosa",
     descripcion:
       "Barrio tradicional, muy cercano al casco urbano de La Plata. Ideal para quienes buscan identidad de barrio con todos los servicios cerca.",
-    gradient: "from-[#0D2B59] to-[#3a5a8f]",
+    imagen: "/images/barrios/tolosa.jpg",
   },
   {
     nombre: "Ringuelet",
     descripcion:
       "Zona en expansión, con buena conectividad vial hacia el Gran Buenos Aires. Cada vez más elegida por familias que buscan crecer con la zona.",
-    gradient: "from-[#3a5a8f] to-[#0D2B59]",
+    imagen: "/images/barrios/ringuelet.jpg",
   },
 ];
 
@@ -54,12 +55,21 @@ export default function Barrios() {
       <Header />
 
       {/* Hero */}
-      <section className="bg-[#0D2B59] py-16">
-        <div className="mx-auto max-w-3xl px-8 text-center">
+      <section className="relative overflow-hidden py-16">
+        <Image
+          src="/images/barrios/hero.jpg"
+          alt="Vista aérea de un barrio del Gran La Plata"
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover"
+        />
+        <div className="absolute inset-0 bg-[#0D2B59]/60" />
+        <div className="relative z-10 mx-auto max-w-3xl px-8 text-center">
           <h1 className="font-heading text-4xl font-semibold text-white sm:text-5xl">
             Conocé el Gran La Plata
           </h1>
-          <p className="mt-4 text-lg text-white/80">
+          <p className="mt-4 text-lg text-white/90">
             Trabajamos con conocimiento profundo de cada barrio, para ayudarte
             a encontrar no solo una propiedad, sino el lugar correcto para vos.
           </p>
@@ -74,10 +84,16 @@ export default function Barrios() {
               key={b.nombre}
               className="overflow-hidden rounded-xl bg-white shadow-sm ring-1 ring-gray-100 transition hover:-translate-y-1 hover:shadow-lg"
             >
-              <div
-                className={`flex h-40 items-center justify-center bg-gradient-to-br ${b.gradient}`}
-              >
-                <span className="font-heading text-2xl font-semibold text-white">
+              <div className="relative flex h-40 items-center justify-center overflow-hidden">
+                <Image
+                  src={b.imagen}
+                  alt={`Barrio ${b.nombre}`}
+                  fill
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  className="object-cover"
+                />
+                <div className="absolute inset-0 bg-[#0D2B59]/35" />
+                <span className="relative z-10 font-heading text-2xl font-semibold text-white">
                   {b.nombre}
                 </span>
               </div>
@@ -100,12 +116,20 @@ export default function Barrios() {
       </section>
 
       {/* CTA final */}
-      <section className="bg-[#F5F5F5] py-20">
-        <div className="mx-auto max-w-2xl px-8 text-center">
-          <h2 className="font-heading text-3xl font-semibold text-[#0D2B59] sm:text-4xl">
+      <section className="relative overflow-hidden py-20">
+        <Image
+          src="/images/barrios/cta.jpg"
+          alt="Mapa de búsqueda de zona"
+          fill
+          sizes="100vw"
+          className="object-cover"
+        />
+        <div className="absolute inset-0 bg-[#0D2B59]/70" />
+        <div className="relative z-10 mx-auto max-w-2xl px-8 text-center">
+          <h2 className="font-heading text-3xl font-semibold text-white sm:text-4xl">
             ¿No encontrás tu zona?
           </h2>
-          <p className="mt-4 text-lg text-gray-600">
+          <p className="mt-4 text-lg text-white/90">
             Trabajamos en todo el Gran La Plata y alrededores. Contanos qué
             estás buscando y te ayudamos a encontrarlo.
           </p>
@@ -113,7 +137,7 @@ export default function Barrios() {
             href="https://wa.me/5492215593304"
             target="_blank"
             rel="noopener noreferrer"
-            className="mt-8 inline-block h-[52px] rounded-xl bg-[#0D2B59] px-8 py-[14px] font-semibold text-white transition hover:bg-[#C79A3B] hover:text-[#0D2B59]"
+            className="mt-8 inline-block h-[52px] rounded-xl bg-[#C79A3B] px-8 py-[14px] font-semibold text-[#0D2B59] transition hover:bg-white"
           >
             Conversemos por WhatsApp
           </Link>
