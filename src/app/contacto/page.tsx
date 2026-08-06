@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import WhatsAppButton from "@/components/ui/WhatsAppButton";
@@ -97,12 +98,21 @@ export default function Contacto() {
     <>
       <Header />
 
-      <section className="bg-[#0D2B59] py-16">
-        <div className="mx-auto max-w-3xl px-8 text-center">
+      <section className="relative overflow-hidden py-16">
+        <Image
+          src="/images/contacto/conversemos.jpg"
+          alt="Espacio de trabajo cálido para una charla"
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover"
+        />
+        <div className="absolute inset-0 bg-[#0D2B59]/60" />
+        <div className="relative z-10 mx-auto max-w-3xl px-8 text-center">
           <h1 className="font-heading text-4xl font-semibold text-white sm:text-5xl">
             Conversemos
           </h1>
-          <p className="mt-4 text-lg text-white/80">
+          <p className="mt-4 text-lg text-white/90">
             Estamos para ayudarte. Elegí el canal que prefieras y con gusto
             respondemos a la brevedad.
           </p>
@@ -146,13 +156,21 @@ export default function Contacto() {
         </div>
       </section>
 
-      <section className="bg-[#F5F5F5] py-20">
-        <div className="mx-auto max-w-2xl px-8">
+      <section className="relative overflow-hidden py-20">
+        <Image
+          src="/images/contacto/escribinos.jpg"
+          alt="Escritorio con notebook para escribir tu consulta"
+          fill
+          sizes="100vw"
+          className="object-cover"
+        />
+        <div className="absolute inset-0 bg-[#0D2B59]/70" />
+        <div className="relative z-10 mx-auto max-w-2xl px-8">
           <div className="text-center">
-            <h2 className="font-heading text-3xl font-semibold text-[#0D2B59] sm:text-4xl">
+            <h2 className="font-heading text-3xl font-semibold text-white sm:text-4xl">
               Escribinos
             </h2>
-            <p className="mt-4 text-lg text-gray-600">
+            <p className="mt-4 text-lg text-white/90">
               Completá el formulario y te respondemos por WhatsApp.
             </p>
           </div>
@@ -224,7 +242,7 @@ export default function Contacto() {
 
               <button
                 type="submit"
-                className="h-[52px] rounded-xl bg-[#C79A3B] font-semibold text-[#0D2B59] transition hover:bg-[#0D2B59] hover:text-white sm:col-span-2"
+                className="h-[52px] rounded-xl bg-[#C79A3B] font-semibold text-[#0D2B59] transition hover:bg-white sm:col-span-2"
               >
                 Enviar mensaje
               </button>
