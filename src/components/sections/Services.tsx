@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 const servicios = [
   {
     titulo: "Compra",
@@ -43,37 +45,49 @@ const servicios = [
 
 export default function Services() {
   return (
-    <section className="mx-auto max-w-7xl px-8 py-24">
-      <div className="mx-auto max-w-2xl text-center">
-        <h2 className="font-heading text-3xl font-semibold text-[#0D2B59] sm:text-4xl">
-          Nuestros Servicios
-        </h2>
-        <p className="mt-4 text-lg text-gray-600">
-          Un acompañamiento profesional en cada etapa de tu decisión inmobiliaria.
-        </p>
-      </div>
+    <>
+      <section className="relative flex min-h-[380px] items-center overflow-hidden py-16">
+        <Image
+          src="/images/servicios/hero.jpg"
+          alt="Living luminoso de una propiedad"
+          fill
+          sizes="100vw"
+          className="object-cover"
+        />
+        <div className="absolute inset-0 bg-[#0D2B59]/60" />
+        <div className="relative z-10 mx-auto max-w-2xl px-8 text-center">
+          <h2 className="font-heading text-3xl font-semibold text-white sm:text-4xl">
+            Nuestros Servicios
+          </h2>
+          <p className="mt-4 text-lg text-white/90">
+            Un acompañamiento profesional en cada etapa de tu decisión inmobiliaria.
+          </p>
+        </div>
+      </section>
 
-      <div className="mt-16 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
-        {servicios.map((s) => (
-          <div
-            key={s.titulo}
-            className="group rounded-xl bg-white p-8 shadow-sm ring-1 ring-gray-100 transition hover:-translate-y-1 hover:shadow-lg"
-          >
-            <div className="flex h-14 w-14 items-center justify-center rounded-xl bg-[#F5F5F5]">
-              {s.icon}
+      <section className="mx-auto max-w-7xl px-8 py-24">
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          {servicios.map((s) => (
+            <div
+              key={s.titulo}
+              className="group rounded-xl bg-white p-8 shadow-sm ring-1 ring-gray-100 transition hover:-translate-y-1 hover:shadow-lg"
+            >
+              <div className="flex h-14 w-14 items-center justify-center rounded-xl bg-[#F5F5F5]">
+                {s.icon}
+              </div>
+              <h3 className="mt-6 font-heading text-xl font-semibold text-[#0D2B59]">
+                {s.titulo}
+              </h3>
+              <p className="mt-3 text-sm leading-relaxed text-gray-600">
+                {s.descripcion}
+              </p>
+              <button className="mt-5 text-sm font-semibold text-[#C79A3B] transition group-hover:text-[#0D2B59]">
+                Conocer más →
+              </button>
             </div>
-            <h3 className="mt-6 font-heading text-xl font-semibold text-[#0D2B59]">
-              {s.titulo}
-            </h3>
-            <p className="mt-3 text-sm leading-relaxed text-gray-600">
-              {s.descripcion}
-            </p>
-            <button className="mt-5 text-sm font-semibold text-[#C79A3B] transition group-hover:text-[#0D2B59]">
-              Conocer más →
-            </button>
-          </div>
-        ))}
-      </div>
-    </section>
+          ))}
+        </div>
+      </section>
+    </>
   );
 }
