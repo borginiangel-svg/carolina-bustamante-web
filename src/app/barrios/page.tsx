@@ -55,7 +55,7 @@ export default function Barrios() {
       <Header />
 
       {/* Hero */}
-      <section className="relative overflow-hidden py-16">
+      <section className="relative flex min-h-[420px] items-center overflow-hidden py-16">
         <Image
           src="/images/barrios/hero.jpg"
           alt="Vista aérea de un barrio del Gran La Plata"
@@ -116,7 +116,7 @@ export default function Barrios() {
       </section>
 
       {/* CTA final */}
-      <section className="relative overflow-hidden py-20">
+      <section className="relative flex min-h-[420px] items-center overflow-hidden py-20">
         <Image
           src="/images/barrios/cta.jpg"
           alt="Mapa de búsqueda de zona"

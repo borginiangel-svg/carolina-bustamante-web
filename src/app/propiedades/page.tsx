@@ -17,7 +17,7 @@ export default async function Propiedades() {
   return (
     <>
       <Header />
-      <section className="relative overflow-hidden py-16">
+      <section className="relative flex min-h-[420px] items-center overflow-hidden py-16">
         <Image
           src="/images/propiedades/hero.jpg"
           alt="Casa moderna con pileta al atardecer"

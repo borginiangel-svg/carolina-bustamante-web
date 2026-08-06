@@ -98,7 +98,7 @@ export default function Contacto() {
     <>
       <Header />
 
-      <section className="relative overflow-hidden py-16">
+      <section className="relative flex min-h-[420px] items-center overflow-hidden py-16">
         <Image
           src="/images/contacto/conversemos.jpg"
           alt="Espacio de trabajo cálido para una charla"
@@ -156,7 +156,7 @@ export default function Contacto() {
         </div>
       </section>
 
-      <section className="relative overflow-hidden py-20">
+      <section className="relative flex min-h-[500px] items-center overflow-hidden py-20">
         <Image
           src="/images/contacto/escribinos.jpg"
           alt="Escritorio con notebook para escribir tu consulta"
