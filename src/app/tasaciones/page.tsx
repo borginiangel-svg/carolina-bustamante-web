@@ -131,8 +131,16 @@ export default function Tasaciones() {
         </div>
       </section>
 
-      <section id="formulario" className="scroll-mt-24 bg-[#0D2B59] py-20">
-        <div className="mx-auto max-w-2xl px-8">
+      <section id="formulario" className="relative flex min-h-[500px] items-center overflow-hidden scroll-mt-24 py-20">
+        <Image
+          src="/images/tasaciones/formulario.jpg"
+          alt="Agente inmobiliaria revisando propiedad en tablet y documentos"
+          fill
+          sizes="100vw"
+          className="object-cover"
+        />
+        <div className="absolute inset-0 bg-[#0D2B59]/75" />
+        <div className="relative z-10 mx-auto max-w-2xl px-8">
           <div className="text-center">
             <h2 className="font-heading text-3xl font-semibold text-white sm:text-4xl">
               Solicitá tu tasación
