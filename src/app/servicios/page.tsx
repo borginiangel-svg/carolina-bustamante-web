@@ -174,7 +174,7 @@ export default function Servicios() {
       ))}
 
       {/* CTA final */}
-      <section className="relative flex min-h-[380px] items-center overflow-hidden py-20">
+      <section className="relative flex min-h-[480px] items-center overflow-hidden py-20">
         <Image
           src="/images/servicios/cta.jpg"
           alt="Escritorio con maqueta de casa y libreta"
