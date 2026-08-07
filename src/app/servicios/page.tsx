@@ -174,8 +174,16 @@ export default function Servicios() {
       ))}
 
       {/* CTA final */}
-      <section className="bg-[#0D2B59] py-20">
-        <div className="mx-auto max-w-2xl px-8 text-center">
+      <section className="relative flex min-h-[380px] items-center overflow-hidden py-20">
+        <Image
+          src="/images/servicios/cta.jpg"
+          alt="Escritorio con maqueta de casa y libreta"
+          fill
+          sizes="100vw"
+          className="object-cover"
+        />
+        <div className="absolute inset-0 bg-[#0D2B59]/70" />
+        <div className="relative z-10 mx-auto max-w-2xl px-8 text-center">
           <h2 className="font-heading text-3xl font-semibold text-white sm:text-4xl">
             ¿No sabés por dónde empezar?
           </h2>
