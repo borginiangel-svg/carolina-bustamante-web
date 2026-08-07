@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import WhatsAppButton from "@/components/ui/WhatsAppButton";
@@ -74,15 +75,24 @@ export default function Tasaciones() {
     <>
       <Header />
 
-      <section className="bg-[#0D2B59] py-20">
-        <div className="mx-auto max-w-3xl px-8 text-center">
+      <section className="relative flex min-h-[420px] items-center overflow-hidden py-20">
+        <Image
+          src="/images/tasaciones/hero.jpg"
+          alt="Laptop con análisis de mercado y maqueta de casa"
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover"
+        />
+        <div className="absolute inset-0 bg-[#0D2B59]/65" />
+        <div className="relative z-10 mx-auto max-w-3xl px-8 text-center">
           <p className="font-semibold uppercase tracking-wide text-[#C79A3B]">
             Sin costo, sin compromiso
           </p>
           <h1 className="mt-4 font-heading text-4xl font-semibold text-white sm:text-5xl">
             Tasación Gratuita de tu propiedad
           </h1>
-          <p className="mt-6 text-lg leading-relaxed text-white/85">
+          <p className="mt-6 text-lg leading-relaxed text-white/90">
             Analicemos juntos el valor real de tu propiedad, con criterio profesional
             y conocimiento del mercado del Gran La Plata.
           </p>
