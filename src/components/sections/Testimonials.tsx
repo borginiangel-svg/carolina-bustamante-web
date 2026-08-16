@@ -46,7 +46,7 @@ export default function Testimonials() {
             className="rounded-xl bg-white p-8 shadow-sm ring-1 ring-gray-100"
           >
             <div className="flex items-center gap-4">
-              <div className="flex h-12 w-12 items-center justify-center rounded-full bg-[#0D2B59] font-semibold text-white">
+              <div className="flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-[#C79A3B] to-[#0D2B59] font-semibold text-white ring-2 ring-white ring-offset-2 ring-offset-white shadow-sm">
                 {iniciales(t.nombre)}
               </div>
               <div>
