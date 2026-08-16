@@ -4,6 +4,8 @@ import { useEffect } from "react";
 
 export default function DebugConsole() {
   useEffect(() => {
+    if (process.env.NODE_ENV !== "development") return;
+
     const params = new URLSearchParams(window.location.search);
     if (params.get("debug") !== "1") return;
 
