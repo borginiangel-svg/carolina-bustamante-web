@@ -50,11 +50,15 @@ export default function Nosotros() {
             </p>
           </div>
 
-          {/* Placeholder de foto de Carolina */}
-          <div className="mx-auto flex h-80 w-80 items-center justify-center rounded-full bg-gradient-to-br from-[#C79A3B] to-[#0D2B59] sm:h-96 sm:w-96">
-            <span className="font-heading text-2xl font-semibold text-white/80">
-              Foto de Carolina
-            </span>
+          {/* Foto de Carolina (provisorio: logo de la marca) */}
+          <div className="mx-auto h-80 w-80 overflow-hidden rounded-full bg-white shadow-lg sm:h-96 sm:w-96">
+            <Image
+              src="/images/nosotros/logo-provisorio-blanco.webp"
+              alt="Carolina Bustamante Bienes Raíces"
+              width={384}
+              height={384}
+              className="h-full w-full object-cover"
+            />
           </div>
         </div>
       </section>
