@@ -6,6 +6,12 @@ import WhatsAppButton from "@/components/ui/WhatsAppButton";
 import PropiedadesFiltro from "@/components/sections/PropiedadesFiltro";
 import { createClient } from "@/lib/supabase/server";
 
+export const metadata = {
+  title: "Propiedades | Carolina Bustamante Bienes Raíces",
+  description:
+    "Encontrá casas, departamentos, terrenos y locales comerciales en venta o alquiler en el Gran La Plata.",
+};
+
 export default async function Propiedades() {
   const supabase = await createClient();
   const { data: propiedades } = await supabase

@@ -4,6 +4,12 @@ import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import WhatsAppButton from "@/components/ui/WhatsAppButton";
 
+export const metadata = {
+  title: "Nosotros | Carolina Bustamante Bienes Raíces",
+  description:
+    "Conocé a Carolina Bustamante: misión, visión y valores de una inmobiliaria enfocada en el acompañamiento personalizado en el Gran La Plata.",
+};
+
 const valores = [
   "Confianza",
   "Profesionalismo",

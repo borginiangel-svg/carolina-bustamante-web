@@ -4,6 +4,12 @@ import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import WhatsAppButton from "@/components/ui/WhatsAppButton";
 
+export const metadata = {
+  title: "Barrios | Carolina Bustamante Bienes Raíces",
+  description:
+    "Conocé Centro, City Bell, Gonnet, Villa Elisa, Tolosa y Ringuelet: conocimiento profundo de cada barrio del Gran La Plata.",
+};
+
 type Barrio = {
   nombre: string;
   descripcion: string;

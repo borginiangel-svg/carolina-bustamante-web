@@ -4,6 +4,12 @@ import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import WhatsAppButton from "@/components/ui/WhatsAppButton";
 
+export const metadata = {
+  title: "Servicios | Carolina Bustamante Bienes Raíces",
+  description:
+    "Compra, venta, alquiler y tasación de propiedades en el Gran La Plata, con acompañamiento profesional en cada paso.",
+};
+
 type Servicio = {
   id: string;
   titulo: string;
