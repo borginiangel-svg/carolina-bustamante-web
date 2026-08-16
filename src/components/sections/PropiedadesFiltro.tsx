@@ -65,6 +65,8 @@ export default function PropiedadesFiltro({
     setPrecio(precios[0]);
   }
 
+  const sinPropiedadesCargadas = propiedades.length === 0;
+
   return (
     <>
       {/* Filtros */}
@@ -114,12 +116,34 @@ export default function PropiedadesFiltro({
       {/* Resultados */}
       <section className="bg-[#F5F5F5] py-16">
         <div className="mx-auto max-w-7xl px-8">
-          <p className="mb-8 text-sm text-gray-600">
-            {resultados.length}{" "}
-            {resultados.length === 1 ? "propiedad encontrada" : "propiedades encontradas"}
-          </p>
+          {!sinPropiedadesCargadas && (
+            <p className="mb-8 text-sm text-gray-600">
+              {resultados.length}{" "}
+              {resultados.length === 1 ? "propiedad encontrada" : "propiedades encontradas"}
+            </p>
+          )}
 
-          {resultados.length === 0 ? (
+          {sinPropiedadesCargadas ? (
+            <div className="rounded-xl bg-white p-16 text-center shadow-sm">
+              <p className="font-heading text-xl font-semibold text-[#0D2B59]">
+                Estamos actualizando nuestra cartera de propiedades
+              </p>
+              <p className="mx-auto mt-2 max-w-md text-gray-600">
+                Contanos qué estás buscando y te ayudamos a encontrarlo, o dejanos tus
+                datos y te avisamos apenas tengamos una propiedad que coincida.
+              </p>
+              <Link
+                href={`https://wa.me/5492215593304?text=${encodeURIComponent(
+                  "Hola! Quiero que me ayudes a encontrar una propiedad."
+                )}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-6 inline-block h-[48px] rounded-xl bg-[#0D2B59] px-6 py-3 font-semibold text-white transition hover:bg-[#C79A3B]"
+              >
+                Conversemos por WhatsApp
+              </Link>
+            </div>
+          ) : resultados.length === 0 ? (
             <div className="rounded-xl bg-white p-16 text-center shadow-sm">
               <p className="font-heading text-xl font-semibold text-[#0D2B59]">
                 No encontramos propiedades con esos filtros
