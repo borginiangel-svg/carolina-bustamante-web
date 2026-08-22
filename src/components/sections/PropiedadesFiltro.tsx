@@ -124,7 +124,7 @@ export default function PropiedadesFiltro({
           )}
 
           {sinPropiedadesCargadas ? (
-            <div className="rounded-xl bg-white p-16 text-center shadow-sm">
+            <div className="rounded-xl bg-white px-6 py-16 text-center shadow-sm sm:p-16">
               <p className="font-heading text-xl font-semibold text-[#0D2B59]">
                 Estamos actualizando nuestra cartera de propiedades
               </p>
@@ -138,7 +138,7 @@ export default function PropiedadesFiltro({
                 )}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mt-6 inline-block h-[48px] rounded-xl bg-[#0D2B59] px-6 py-3 font-semibold text-white transition hover:bg-[#C79A3B]"
+                className="mt-6 inline-flex min-h-[48px] w-full items-center justify-center rounded-xl bg-[#0D2B59] px-6 py-3 text-center font-semibold leading-snug text-white transition hover:bg-[#C79A3B] sm:w-auto"
               >
                 Conversemos por WhatsApp
               </Link>
